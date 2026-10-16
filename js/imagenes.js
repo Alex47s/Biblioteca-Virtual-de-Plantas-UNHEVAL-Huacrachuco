@@ -1,0 +1,26 @@
+/* Fotos reales, ilustraciones y subida de fotos propias */
+/* Fotos del registro del proyecto */
+const IMG={"0": ["img/plantas/eucalipto-1.jpg"], "1": ["img/plantas/pino-radiata-1.jpg"], "2": ["img/plantas/paico-1.jpg"], "3": ["img/plantas/gordolobo-1.jpg", "img/plantas/gordolobo-2.jpg"], "4": ["img/plantas/palta-1.jpg"], "5": ["img/plantas/conyza-1.jpg"], "6": ["img/plantas/uva-1.jpg"], "7": ["img/plantas/gazania-1.jpg"], "8": ["img/plantas/enebro-chino-1.jpg"], "9": ["img/plantas/llanten-1.jpg"], "10": ["img/plantas/junco-1.jpg"], "11": ["img/plantas/manzana-del-peru-1.jpg"], "12": ["img/plantas/hoja-de-sangre-1.jpg", "img/plantas/hoja-de-sangre-2.jpg"], "13": ["img/plantas/cotoneaster-1.jpg"]};
+const thumbs=i=>!photo(i)&&IMG[i]&&IMG[i].length>1?'<div class="th">'+IMG[i].map((s,k)=>`<img src="${s}" alt="Foto ${k+1} de ${P[i].n}">`).join('')+'</div>':'';
+/* Imágenes */
+let calm=false;const refresh=()=>{calm=true;render();calm=false};
+const AS=[['euc'],['pine'],['sprig','#6B9A3A','#D6E07A'],['rosette','#8FA66E','#F2C230'],['tree','#2F6B3A','#4A2C1A'],['sprig','#7A9A55','#FFFFFF'],['vine','#4E8A3A','#6A2C70'],['daisy','#F59E0B','#7A3B0B'],['bush','#2E6A4A','#8FB4D6'],['rosette','#4F8F3F','#8BAF5B'],['reeds','#4F7F36'],['sprig','#5E8C3A','#7C6BD6'],['sprig','#A32B4A','#E8A0B0'],['bush','#2F6B3A','#D1302B']];
+const E=(x,y,r,l,c)=>`<ellipse cx="${x}" cy="${y}" rx="${l/3}" ry="${l/2}" transform="rotate(${r} ${x} ${y})" fill="${c}"/>`;
+const C=(x,y,r,c)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${c}"/>`;
+const SC={
+euc:()=>{let s='<path d="M98 128C96 90 104 60 100 18" stroke="#C9B49A" stroke-width="9" fill="none" stroke-linecap="round"/>';for(let k=0;k<16;k++)s+=E(100+(k%8-3.5)*13,42+(k%4)*13,(k%8-3.5)*7,46,k%2?'#6FA58F':'#8DBFA8');return s},
+pine:()=>'<rect x="94" y="100" width="12" height="28" fill="#7A4B2A"/>'+['M100 12 134 56H66Z','M100 34 142 84H58Z','M100 58 150 112H50Z'].map((d,k)=>`<path d="${d}" fill="${['#2F6B3A','#3A7D46','#2A5E34'][k]}"/>`).join(''),
+tree:(c,f)=>'<rect x="94" y="68" width="12" height="60" rx="4" fill="#7A4B2A"/>'+C(100,48,34,c)+C(74,68,24,c)+C(126,68,24,c)+C(92,40,16,'#fff2')+[[84,62],[112,54],[126,76],[70,78],[100,76]].map(p=>E(p[0],p[1],0,12,f)).join(''),
+rosette:(c,f)=>{let s='';[-75,-50,-25,25,50,75].forEach(r=>{const a=r*Math.PI/180;s+=E(100+Math.sin(a)*30,118-Math.cos(a)*22,r,50,c)});s+='<path d="M100 120V32" stroke="#6B8E3F" stroke-width="4"/>';for(let y=32;y<76;y+=7)s+=C(100+(y%14?3:-3),y,5,f);return s},
+daisy:(c,f)=>{let s='<path d="M100 126V56" stroke="#4F7F36" stroke-width="4"/>'+E(76,110,-60,40,'#5E8C3A')+E(124,104,60,40,'#5E8C3A');for(let k=0;k<12;k++)s+=E(100+Math.sin(k*.52)*18,46-Math.cos(k*.52)*18,k*30,26,c);return s+C(100,46,9,f)},
+bush:(c,f)=>C(100,84,36,c)+C(70,96,26,c)+C(130,96,26,c)+C(100,58,24,c)+[[84,72],[112,66],[96,92],[70,100],[128,100],[104,50],[86,52],[118,88]].map(p=>C(p[0],p[1],4.5,f)).join(''),
+vine:(c,f)=>'<path d="M24 122C60 96 38 64 88 54S150 44 176 18" stroke="#7A4B2A" stroke-width="4" fill="none"/>'+[[50,98,-40],[82,60,20],[132,44,-20],[160,28,30]].map(p=>E(p[0],p[1],p[2],46,c)).join('')+[...Array(12)].map((_,k)=>C(124+(k%4)*9-(k>>2)*4,74+(k>>2)*10,6,f)).join(''),
+reeds:c=>[...Array(11)].map((_,k)=>{const x=54+k*9,d=(k%3-1)*12;return `<path d="M${x} 128Q${x+d} 80 ${x+d*1.6} ${30+k%4*10}" stroke="${c}" stroke-width="3" fill="none" stroke-linecap="round"/>`+(k%3==1?E(x+d*1.6,28+k%4*10,0,10,'#7A4B2A'):'')}).join(''),
+sprig:(c,f)=>{let s='<path d="M100 126C96 90 104 60 100 26" stroke="#5E7F3A" stroke-width="4" fill="none"/>';[104,84,64,44].forEach((y,k)=>{s+=E(78,y,-55,38-k*4,c)+E(122,y-6,55,38-k*4,c)});return s+[[100,22],[92,30],[108,30],[100,36],[88,40],[112,40]].map(p=>C(p[0],p[1],6,f)).join('')}
+};
+const photo=i=>{try{return localStorage.getItem('ph'+i)}catch(e){return null}};
+const setPhoto=(i,v)=>{try{v?localStorage.setItem('ph'+i,v):localStorage.removeItem('ph'+i)}catch(e){alert('No se pudo guardar la foto en este navegador.')}};
+const pic=(i,big)=>{const h=photo(i)||(IMG[i]&&IMG[i][0]),b=big?' big':'';return h?`<div class="pic${b}"><img src="${h}" alt="Foto de ${P[i].n}"></div>`:`<div class="pic${b}" style="--h:${(i*17)%45+18}"><svg viewBox="0 0 200 140" role="img" aria-label="Ilustración de ${P[i].n}"><g class="sw"><ellipse cx="100" cy="129" rx="64" ry="7" fill="#0002"/>${SC[AS[i][0]](...AS[i].slice(1))}</g></svg></div>`};
+function upload(i,f){if(!f)return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,520/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);setPhoto(i,c.toDataURL('image/jpeg',.78));ficha(i);refresh()};im.src=r.result};r.readAsDataURL(f)}
+const BIN='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5.5" width="16" height="2.4" rx="1.2" fill="currentColor"/><path d="M9.5 5.5V3.8h5v1.7" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M6 9h12l-1 11.2H7z" fill="currentColor"/><path d="M12 18.2c-2.3-.2-3.6-1.7-3.5-4 2.2 0 3.7 1.1 3.5 4z" fill="#FFF6EA"/></svg>';
+document.querySelector('[data-tab=residuos]').insertAdjacentHTML('afterbegin',BIN);$('#residuos h2').insertAdjacentHTML('afterbegin',BIN);

@@ -1,0 +1,50 @@
+/* Paleta cálida */
+nav svg{width:1.05em;height:1.05em;vertical-align:-.15em;margin-right:.3rem}
+.panel h2 svg{width:.8em;height:.8em;vertical-align:-.05em;margin-right:.4rem;color:var(--pri)}
+.card{overflow:hidden}
+.pic{height:132px;margin:-1rem -1rem .75rem;background:linear-gradient(160deg,hsl(var(--h) 92% 88%),hsl(calc(var(--h) + 16) 88% 76%));overflow:hidden}
+.pic.big{height:210px;margin:0}.pic svg,.pic img{width:100%;height:100%;display:block}.pic img{object-fit:cover}
+.mf{flex-wrap:wrap}.hero{position:relative}
+.fl i{position:absolute;width:24px;height:24px;border-radius:0 75% 0 75%;background:var(--acc);opacity:.55;pointer-events:none}
+.fl i:nth-child(1){right:8%;top:6%}.fl i:nth-child(2){right:22%;top:46%;width:16px;height:16px;background:var(--pri)}.fl i:nth-child(3){right:3%;top:62%;width:20px;height:20px}
+@media(prefers-reduced-motion:no-preference){
+header.top{animation:hd 16s ease-in-out infinite alternate}
+.card.in{animation:pop .5s ease backwards;animation-delay:var(--d,0ms)}
+dialog[open]{animation:pop .3s ease}.box{animation:pop .4s ease}
+.sw{transform-box:fill-box;transform-origin:50% 100%;animation:sway 4.5s ease-in-out infinite alternate;animation-delay:var(--d,0ms)}
+.card:hover .sw{animation-duration:1.4s}
+.fl i{animation:drift 8s ease-in-out infinite alternate}.fl i:nth-child(2){animation-delay:-3s}.fl i:nth-child(3){animation-delay:-5s}
+.item{display:inline-block;animation:bob 2s ease-in-out infinite}
+.opt.ok{animation:bounce .5s}.opt.no{animation:shake .4s}.fav[aria-pressed=true]{animation:bounce .4s}.chip:active{transform:scale(.92)}
+}
+@keyframes hd{to{background-position:100% 0}}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.96)}}
+@keyframes sway{from{transform:rotate(-2.5deg)}to{transform:rotate(2.5deg)}}
+@keyframes drift{to{transform:translate(-18px,22px) rotate(40deg)}}
+@keyframes bob{50%{transform:translateY(-8px) rotate(-4deg)}}
+@keyframes bounce{40%{transform:scale(1.06)}70%{transform:scale(.98)}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+/* Verdes cálidos */
+:root{--bg:#F1F0D8;--s:#FBFAEA;--ink:#25300F;--mut:#66683F;--pri:#55762A;--acc:#D2A82B;--ln:#DCDDB6;--hd:#34501A;--r0:#7B7A5C;--r1:#3E7D2F;--r2:#A8680A;--r3:#A8321F}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#1B2010;--s:#252C16;--ink:#EEF1D6;--mut:#B9BE8C;--pri:#A7D35A;--acc:#E8C547;--ln:#3C4524;--hd:#121708;--r0:#B3B592;--r1:#8ED06B;--r2:#F0C050;--r3:#F28B76}}
+:root[data-theme=dark]{--bg:#1B2010;--s:#252C16;--ink:#EEF1D6;--mut:#B9BE8C;--pri:#A7D35A;--acc:#E8C547;--ln:#3C4524;--hd:#121708;--r0:#B3B592;--r1:#8ED06B;--r2:#F0C050;--r3:#F28B76}
+header.top{background:linear-gradient(100deg,#34501A,#55762A,#8A9A2A,#55762A,#34501A);background-size:300% 100%;color:#FBFAEA}
+nav button[aria-selected=true]{background:#FBFAEA;color:#34501A}
+.card:hover{box-shadow:0 8px 22px #55762a38}
+.pic{background:linear-gradient(160deg,#F0EFC4,#CFDC93)}.pic img{object-position:center 62%}
+.pic.big{height:280px}.pic.big img{object-fit:contain;object-position:center}
+.bins [data-b=o]{background:#7A5A2A}.bins [data-b=r]{background:#55762A}.bins [data-b=n]{background:#5C5A44}
+.th{display:flex;gap:.4rem;padding:.6rem 1.4rem 0}.th img{width:58px;height:58px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid var(--ln)}
+dialog{overflow:hidden}#dc{display:flex;flex-direction:column;max-height:92vh;max-height:92dvh}#dc>*{flex:none}#dc>.mb{flex:1 1 auto;min-height:0;max-height:none}
+@media(max-width:640px){
+main{padding:1rem .85rem 2.5rem}header.top{padding:.55rem .85rem}.brand{font-size:1rem}
+nav{width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}nav button{white-space:nowrap;padding:.5rem .9rem}
+.hero h1{max-width:none}.fl{display:none}
+.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}
+.card .open{padding:.75rem}.pic{height:118px;margin:-.75rem -.75rem .6rem}.pic.big{height:240px;margin:0}
+.card h3{font-size:1.05rem}.card em{font-size:.8rem}.tag{font-size:.72rem}.rk{font-size:.82rem}
+.chip{padding:.45rem .85rem}.cnt{margin-left:0;width:100%}
+.mh,.mb,.mf,.th{padding-left:1rem;padding-right:1rem}.mf .btn{flex:1 1 42%;padding:.65rem .5rem;text-align:center}
+.box{padding:1rem}.bins .btn{min-width:100%;padding:.8rem}
+}
+@media(max-width:360px){.grid{grid-template-columns:1fr}}

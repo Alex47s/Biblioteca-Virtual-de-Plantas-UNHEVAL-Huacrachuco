@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Biblioteca Virtual de Plantas – UNHEVAL Huacrachuco</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Figtree:wght@400;600&family=Caveat:wght@600&display=swap">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/tema-y-animaciones.css">
+<link rel="stylesheet" href="css/decoracion.css">
+<link rel="stylesheet" href="css/titulos-y-transiciones.css">
+</head>
+<body>
+<div class="bg" id="bg" aria-hidden="true"></div>
+<div class="bf" aria-hidden="true"><svg viewBox="0 0 60 40"><g class="wl l"><path d="M29 20C20 2 4 2 6 15c2 11 16 9 23 5z" fill="#E0A033"/></g><g class="wl r"><path d="M31 20C40 2 56 2 54 15c-2 11-16 9-23 5z" fill="#C9702B"/></g><rect x="28.5" y="12" width="3" height="18" rx="1.5" fill="#3B2A12"/></svg></div>
+<header class="top">
+ <div class="brand"><svg class="lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19C4 9 10 3 20 4c1 10-5 16-15 15z" fill="#D2A82B"/><path d="M6 18 15 9" stroke="#34501A" stroke-width="1.6"/></svg>Herbario UNHEVAL · Huacrachuco</div>
+ <nav id="nav" role="tablist" aria-label="Secciones">
+  <button role="tab" data-tab="plantas" aria-selected="true">Plantas</button>
+  <button role="tab" data-tab="quiz" aria-selected="false">Ponte a prueba</button>
+  <button role="tab" data-tab="residuos" aria-selected="false">Residuos</button>
+  <button role="tab" data-tab="proyecto" aria-selected="false">Proyecto</button>
+ </nav>
+</header>
+<main>
+<section id="plantas" class="panel">
+ <div class="hero">
+  <div class="fl" aria-hidden="true"><i></i><i></i><i></i><svg class="br" viewBox="0 0 220 170"><path d="M8 164C70 140 130 96 208 14" stroke="#6B8E3F" stroke-width="4" fill="none" stroke-linecap="round"/><g fill="#7FA03A"><ellipse cx="48" cy="140" rx="9" ry="20" transform="rotate(-70 48 140)"/><ellipse cx="62" cy="118" rx="9" ry="20" transform="rotate(30 62 118)"/><ellipse cx="96" cy="118" rx="9" ry="20" transform="rotate(-62 96 118)"/><ellipse cx="112" cy="92" rx="9" ry="20" transform="rotate(34 112 92)"/><ellipse cx="146" cy="82" rx="9" ry="20" transform="rotate(-58 146 82)"/><ellipse cx="160" cy="54" rx="9" ry="20" transform="rotate(38 160 54)"/></g><g fill="#D2A82B"><circle cx="196" cy="26" r="9"/><circle cx="178" cy="40" r="6"/></g><circle cx="196" cy="26" r="4" fill="#8F4F10"/></svg></div><p class="eyebrow">Herbario virtual · UNHEVAL</p>
+  <h1>Las plantas de <em>nuestra sede</em></h1>
+  <p id="stats"></p><div class="kp" id="kp"></div>
+  <input id="q" class="search" type="search" placeholder="Busca por nombre, familia, uso o propiedad (ej. tos, Asteraceae)" aria-label="Buscar plantas" autocomplete="off">
+ </div>
+ <div class="tk" aria-label="Especies de la biblioteca"><div class="tkin" id="tk"></div></div>
+ <div class="bar" id="bar"></div>
+ <div class="grid" id="grid" aria-live="polite"></div>
+ <p class="note">Los usos son tradicionales o documentados y no son una recomendación de automedicación. La identificación de una planta no implica que sea segura para consumo. No extraigas ejemplares de las áreas verdes. El nivel de precaución es una guía referencial basada en las fichas del proyecto.</p>
+</section>
+
+<section id="quiz" class="panel" hidden>
+ <h2>Ponte a prueba</h2>
+ <p>Seis preguntas generadas al azar con las fichas de la biblioteca. Cada vez serán distintas.</p>
+ <div class="box" id="quizbox"></div>
+</section>
+
+<section id="residuos" class="panel" hidden>
+ <h2>Puntos de disposición de residuos</h2>
+ <p>El primer componente del proyecto instala o reubica tachos en entradas, pasadizos, patios y zonas de mayor tránsito. Practica la segregación: elige el tacho correcto para cada residuo (clasificación referencial).</p>
+ <div class="box"><div class="sc"><span id="wsc"></span><span id="wst"></span></div><div id="wbox"></div></div>
+ <h3>Criterios de instalación</h3>
+ <div class="bar" id="crit"></div>
+</section>
+
+<section id="proyecto" class="panel" hidden>
+ <h2>Proyecto ambiental universitario</h2>
+ <p>Implementación de puntos de disposición de residuos sólidos y reconocimiento y clasificación de plantas medicinales en la Universidad Nacional Hermilio Valdizán de Huánuco, Sede Huacrachuco (Marañón, Huánuco), 2026. Carrera de Derecho y Ciencias Políticas. Docente responsable: Mg. Mack Valverde Herrera.</p>
+ <h3 style="margin-top:1.4rem">Cronograma (septiembre a noviembre de 2026)</h3>
+ <p id="gnow" style="margin:.3rem 0 .8rem"></p>
+ <div class="gw" id="gantt"></div>
+ <div class="two" style="margin-top:1.4rem">
+  <div>
+   <h3>Objetivo general</h3>
+   <p>Mejorar la gestión ambiental de la sede con puntos adecuados de disposición de residuos sólidos y con el reconocimiento, registro y clasificación de sus plantas medicinales, promoviendo una cultura ambiental responsable.</p>
+   <details><summary>Objetivos específicos (9)</summary><ol>
+    <li>Diagnosticar la disposición actual de residuos.</li><li>Identificar zonas para instalar o reubicar tachos.</li><li>Implementar puntos de disposición señalizados.</li><li>Sensibilizar sobre el uso de los recipientes y la segregación.</li><li>Reconocer en campo las plantas medicinales.</li><li>Registrar y clasificar las especies con fichas de observación.</li><li>Verificar la identidad botánica antes de incluirla como dato definitivo.</li><li>Elaborar un inventario básico con valor educativo.</li><li>Evaluar los cambios con indicadores cuantitativos y cualitativos.</li></ol></details>
+  </div>
+  <div>
+   <h3>Normas que sustentan el proyecto</h3>
+   <details><summary>Ley N.° 28611</summary>Ley General del Ambiente: marco general de la gestión ambiental en el Perú.</details>
+   <details><summary>D. Leg. N.° 1278</summary>Ley de Gestión Integral de Residuos Sólidos: promueve minimización, valorización y manejo adecuado.</details>
+   <details><summary>D.S. N.° 014-2017-MINAM</summary>Reglamento del Decreto Legislativo 1278.</details>
+   <details><summary>Ordenanzas de la Municipalidad Provincial de Marañón</summary>N.° 017-2019 (mantenimiento, limpieza y manejo de residuos en Huacrachuco) y N.° 14-2020-MPM/C (gestión integral de residuos sólidos).</details>
+  </div>
+ </div>
+ <h3 style="margin-top:1.4rem">Indicadores de evaluación</h3>
+ <div class="ind" id="ind"></div>
+ <details style="margin-top:1.4rem"><summary>Equipo del proyecto</summary><p>Margarin Peña Liz Ángeles, Flores Cruz Iris Yenitza, Tarazona Reyes Amed, Quispe Rupay Greysi, Campos Villanueva Marialuz, Paulino Caldas Yasmela, Jara Borda Milagros Brisa del Mar, Garay Murga Karina Janett y Villanueva Villanueva Cristian.</p></details>
+</section>
+</main>
+<div class="grass" id="gr" aria-hidden="true"></div><footer>Campaña «Una sede limpia y una flora que conocemos» · UNHEVAL Sede Huacrachuco · 2026 · Fotos del registro del proyecto</footer>
+
+<dialog id="dlg" aria-labelledby="dt"><div id="dc"></div></dialog>
+
+<script src="js/datos.js"></script>
+<script src="js/plantas.js"></script>
+<script src="js/imagenes.js"></script>
+<script src="js/juegos.js"></script>
+<script src="js/cronograma.js"></script>
+<script src="js/decoracion.js"></script>
+<script src="js/transiciones.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

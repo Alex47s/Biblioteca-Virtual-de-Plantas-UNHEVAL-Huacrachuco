@@ -1,0 +1,45 @@
+/* Letras de los títulos */
+.brand{font-family:Fraunces,Georgia,serif;font-weight:800;letter-spacing:-.01em}
+.hero .eyebrow{font:600 1.6rem Caveat,'Segoe Script',cursive;color:var(--pri);margin:0 0 .15rem;transform:rotate(-2deg);transform-origin:left}
+.hero h1{font-weight:800;font-size:clamp(2.4rem,8vw,4.8rem);line-height:1;letter-spacing:-.025em;max-width:13ch;margin:0}
+.hero h1 em{font-style:italic;font-weight:600;color:var(--pri);padding-bottom:.18em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='8' viewBox='0 0 60 8'%3E%3Cpath d='M0 4Q7.5 0 15 4T30 4T45 4T60 4' fill='none' stroke='%23d2a82b' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x bottom/60px 8px}
+.hero p{font-size:1.08rem}
+.w{display:inline-block;white-space:nowrap}.ch{display:inline-block}
+.panel h2{font-weight:800;letter-spacing:-.02em;font-size:clamp(1.9rem,5vw,2.8rem)}
+.card h3,.mh h2{font-weight:700;letter-spacing:-.01em}.mh h2{font-size:2rem}
+.card em,.mh em{font-family:Fraunces,Georgia,serif;font-style:italic;font-weight:400}
+/* Menú, barra de progreso y encabezado */
+nav{position:relative}nav button{position:relative;z-index:1}
+nav button[aria-selected=true]{background:transparent;color:#34501A}
+.pill{position:absolute;z-index:0;background:#FBFAEA;border-radius:99px;pointer-events:none}
+.sp{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:3px;width:0;z-index:12;background:linear-gradient(90deg,var(--acc),var(--pri))}
+header.top.sm{padding-top:.4rem;padding-bottom:.4rem}
+/* Transiciones entre pestañas y al filtrar (View Transitions) */
+::view-transition-group(*){animation-duration:.5s;animation-timing-function:cubic-bezier(.2,.8,.2,1)}
+::view-transition-old(root){animation:vtout .3s ease both}
+::view-transition-new(root){animation:vtin .5s ease both}
+@keyframes vtout{to{opacity:0}}@keyframes vtin{from{opacity:0}}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}}
+@keyframes drop{from{opacity:0;transform:translateY(-.7em) rotate(-10deg) scale(.5)}}
+@keyframes hop{40%{transform:translateY(-.2em) scale(1.18) rotate(-5deg);color:var(--acc)}}
+@keyframes uw{from{width:0}}
+@media(prefers-reduced-motion:no-preference){
+header.top{transition:padding .3s}
+.pill{transition:left .45s cubic-bezier(.3,1.35,.5,1),width .45s cubic-bezier(.3,1.35,.5,1)}
+dialog{opacity:0;transform:translateY(24px) scale(.94);transition:opacity .35s ease,transform .45s cubic-bezier(.2,.9,.3,1.2),overlay .35s allow-discrete,display .35s allow-discrete}
+dialog[open]{opacity:1;transform:none;animation:none}
+dialog::backdrop{background:#0000;backdrop-filter:blur(0);transition:background .35s,backdrop-filter .35s,overlay .35s allow-discrete,display .35s allow-discrete}
+dialog[open]::backdrop{background:#1b2a0a88;backdrop-filter:blur(4px)}
+@starting-style{dialog[open]{opacity:0;transform:translateY(24px) scale(.94)}dialog[open]::backdrop{background:#0000;backdrop-filter:blur(0)}}
+main>section:not([hidden]){animation:none}
+main>section:not([hidden])>*{animation:rise .65s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--n,0)*70ms)}
+main>section>:nth-child(2){--n:1}main>section>:nth-child(3){--n:2}main>section>:nth-child(4){--n:3}main>section>:nth-child(5){--n:4}main>section>:nth-child(n+6){--n:5}
+#proyecto>:not(h2){animation:none!important}
+#dc>*{animation:rise .5s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--n,0)*60ms)}
+#dc>:nth-child(2){--n:1}#dc>:nth-child(3){--n:2}#dc>:nth-child(4){--n:3}#dc>:nth-child(5){--n:4}
+.hero h1.go .ch,.panel h2.go .ch{animation:drop .7s cubic-bezier(.2,1.5,.4,1) backwards;animation-delay:calc(var(--k)*30ms)}
+h1.go .ch:hover,h2.go .ch:hover{animation:hop .5s ease}
+.panel h2::after{animation:uw .9s cubic-bezier(.2,.8,.2,1) .3s backwards}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--n,0)*70ms)}
+.rv.seen{opacity:1;transform:none}
+}
